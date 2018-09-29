@@ -6,7 +6,6 @@
   "author": "Renate Gouveia <renate@horangi.com>",
   "license": "MIT",
   "scripts": {
-    "start2": "xport NODE_ENV=dev || SET \"NODE_ENV=dev\" && nodemon --exec babel-node --presets env,stage-2 src/index.js",
     "start": "export NODE_ENV=dev || SET \"NODE_ENV=dev\" &&  nodemon ./server",
     "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && jest",
     "test-watch": "nodemon --exec 'npm test'"
@@ -23,6 +22,7 @@
     "@babel/preset-env": "^7.1.0",
     "babel-cli": "^6.26.0",
     "jest": "^23.6.0",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "supertest": "^3.3.0"
   }
 }
