@@ -1,0 +1,28 @@
+{
+  "name": "nodejs-fuzzy-search-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:xXValhallaCoderXx/NodeJS-Fuzzy-Search-API.git",
+  "author": "Renate Gouveia <renate@horangi.com>",
+  "license": "MIT",
+  "scripts": {
+    "start2": "xport NODE_ENV=dev || SET \"NODE_ENV=dev\" && nodemon --exec babel-node --presets env,stage-2 src/index.js",
+    "start": "export NODE_ENV=dev || SET \"NODE_ENV=dev\" &&  nodemon ./server",
+    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && jest",
+    "test-watch": "nodemon --exec 'npm test'"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "csvtojson": "^2.0.8",
+    "express": "^4.16.3",
+    "file-stream-rotator": "^0.3.1",
+    "mongoose": "^5.2.18",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.1.0",
+    "babel-cli": "^6.26.0",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.4"
+  }
+}
