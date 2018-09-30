@@ -1,15 +1,12 @@
-const fs = require("fs");
 const csv = require("fast-csv");
-const path = require("path");
 const esConnection = require("./connection");
 
 /** Clear ES index, parse and index all files from the books directory */
-async function readAndInsertBooks() {
+async function resetAndSeed() {
   try {
     // Clear previous ES index
     await esConnection.resetIndex();
     console.log("CLEANED INDEX");
-
     let csvData = [];
     csv
       .fromPath("./people/data.csv")
@@ -22,19 +19,10 @@ async function readAndInsertBooks() {
           monthlyIncome: data[4],
           experienced: data[5]
         });
-        // await insertPeopleData(data[0], data[1])
       })
       .on("end", function() {
         insertPeopleData(csvData);
       });
-
-    // // Read each book file, and index each paragraph in elasticsearch
-    // for (let file of files) {
-    //   console.log(`Reading File - ${file}`)
-    //   const filePath = path.join('./books', file)
-    //   const { title, author, paragraphs } = parseBookFile(filePath)
-    //   await insertBookData(title, author, paragraphs)
-    // }
   } catch (err) {
     console.error(err);
   }
@@ -55,13 +43,13 @@ async function insertPeopleData(csvData) {
       experienced: csvData[i].experienced
     });
   }
-  console.log("ALL BULK PUSH: ");
+  console.log("START PUSH BULK ALL DATA...");
   await esConnection.client.bulk({
     index: esConnection.index,
     type: esConnection.type,
     body: bulkOps
   });
-  console.log("DONE");
+  console.log("FINISHED BULK INSERT...");
 }
 
-readAndInsertBooks();
+resetAndSeed();

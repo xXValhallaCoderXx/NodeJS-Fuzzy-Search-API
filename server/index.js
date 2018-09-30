@@ -1,7 +1,5 @@
 const express = require("express");
-
 const app = express();
-const search = require("./search");
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -12,13 +10,16 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/search", async (req, res) => {
-  const { name, offset } = req.query;
-  let something = await search.queryTerm(name, offset);
-  return res.status(200).send({ success: true, data: something });
-});
+const financeAPI = require("./finance-api");
+
+app.use("/api", financeAPI);
+
 
 app.listen(process.env.PORT, () => {
   console.log("Mode: ", process.env.NODE_ENV);
   console.log("Listening On Port: ", process.env.PORT);
 });
+
+module.exports = {
+  app
+};
