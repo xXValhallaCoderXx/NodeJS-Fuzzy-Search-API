@@ -9,10 +9,11 @@
     "start": "node --inspect=0.0.0.0:9229 server/app.js"
   },
   "dependencies": {
-    "elasticsearch": "13.3.1",
     "body-parser": "^1.18.3",
     "csvtojson": "^2.0.8",
+    "elasticsearch": "13.3.1",
     "express": "^4.16.3",
+    "fast-csv": "^2.4.1",
     "file-stream-rotator": "^0.3.1",
     "mongoose": "^5.2.18",
     "morgan": "^1.9.1"

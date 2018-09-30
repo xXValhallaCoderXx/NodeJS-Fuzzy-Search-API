@@ -11,7 +11,7 @@ services:
      - ES_HOST=elasticsearch
      - PORT=3000
     volumes: # Attach local book data directory
-      - ./books:/usr/src/app/books
+      - ./people:/usr/src/app/people
 
   elasticsearch: # Elasticsearch Instance
     container_name: finance-search

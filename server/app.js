@@ -13,8 +13,8 @@ app.use((req, res, next) => {
 });
 
 app.get("/search", async (req, res) => {
-  const { term, offset } = req.query;
-  let something = await search.queryTerm(term, offset);
+  const { name, offset } = req.query;
+  let something = await search.queryTerm(name, offset);
   return res.status(200).send({ success: true, data: something });
 });
 

@@ -6,14 +6,26 @@ module.exports = {
     const body = {
       from: offset,
       query: { match: {
-        text: {
-          query: term,
-          operator: 'and',
-          fuzziness: 'auto'
+        name: {
+          query: term
         } } },
-      highlight: { fields: { text: {} } }
+      highlight: { fields: { name: {} } }
     }
 
-    return client.search({ index, type, body })
-  }
+    return client.search({ index, type, body, size: 10 })
+  },
+  multiTerm(term, offset = 0) {
+    const body = {
+      from: offset,
+      query: {
+        multi_match: {
+          query: term,
+          fields: ["age", "name"]
+        }
+      },
+      highlight: { fields: { name: {} } }
+    };
+
+    return client.search({ index, type, body, size: 100 });
+  },
 }
