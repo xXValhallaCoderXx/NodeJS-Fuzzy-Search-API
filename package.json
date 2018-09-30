@@ -6,7 +6,7 @@
   "author": "Renate Gouveia <renate@horangi.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node --inspect=0.0.0.0:9229 server/app.js"
+    "start": "node --inspect=0.0.0.0:9229 ./server"
   },
   "dependencies": {
     "body-parser": "^1.18.3",

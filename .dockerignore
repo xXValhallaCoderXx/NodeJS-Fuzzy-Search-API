@@ -1,3 +1,4 @@
 node_modules/
 npm-debug.log
-books/
+package-lock.json
+people/
