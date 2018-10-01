@@ -1,7 +1,6 @@
 const { client, index, type } = require("../elasticsearch/connection");
-// GET /people-like-you?age=23&latitude=40.71667&longitude=19.56667&monthlyIncome=5500&experienced=false
-const demoQuery = (term, offset = 0) => {
-  console.log("TERM: ", term);
+
+const multiQuery = (term, offset = 0) => {
   const body = {
     from: offset,
     query: {
@@ -52,5 +51,5 @@ const demoQuery = (term, offset = 0) => {
 };
 
 module.exports = {
-  demoQuery
+  multiQuery
 };
