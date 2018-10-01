@@ -10,7 +10,7 @@ services:
      - NODE_ENV=local
      - ES_HOST=elasticsearch
      - PORT=3000
-    volumes: # Attach local book data directory
+    volumes: # Attach local people data directory
       - ./people:/usr/src/app/people
 
   elasticsearch: # Elasticsearch Instance
