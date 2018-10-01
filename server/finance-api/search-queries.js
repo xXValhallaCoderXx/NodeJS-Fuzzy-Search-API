@@ -7,14 +7,39 @@ const demoQuery = (term, offset = 0) => {
     query: {
       bool: {
         should: [
-          { match: { age: term.age || "" } },
-          { match: { latitude: term.latitude || "" } },
-          { match: { longitude: term.longitude || "" } },
+          {
+            match: {
+              age: {
+                query: term.age || "",
+                fuzziness: "AUTO",
+                boost: 5
+              }
+            }
+          },
+          {
+            match: {
+              latitude: {
+                query: term.latitude || "",
+                fuzziness: "AUTO",
+                boost: 2
+              }
+            }
+          },
+          {
+            match: {
+              longitude: {
+                query: term.longitude || "",
+                fuzziness: "AUTO",
+                boost: 2
+              }
+            }
+          },
           {
             match: {
               monthlyIncome: {
                 query: term.monthlyIncome || "",
-                fuzziness: "AUTO"
+                fuzziness: "AUTO",
+                boost: 3
               }
             }
           },
