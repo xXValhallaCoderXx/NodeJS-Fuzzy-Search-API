@@ -1,7 +1,6 @@
 const csv = require("fast-csv");
 const esConnection = require("./connection");
 
-/** Clear ES index, parse and index all files from the books directory */
 async function resetAndSeed() {
   try {
     // Clear previous ES index

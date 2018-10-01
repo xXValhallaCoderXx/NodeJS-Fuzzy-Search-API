@@ -2,8 +2,11 @@ const express = require("express");
 const logger = require("morgan");
 const app = express();
 
+const financeAPI = require("./finance-api");
+
 app.use(logger("dev"));
 
+// Allow CORS
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -13,10 +16,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const financeAPI = require("./finance-api");
-
 app.use("/api", financeAPI);
-
 
 app.listen(process.env.PORT, () => {
   console.log("Mode: ", process.env.NODE_ENV);
