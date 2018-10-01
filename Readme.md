@@ -1,0 +1,3 @@
+- run `docker-compose build`
+- run `docker-compose up`
+- run `docker exec finance-api "node" "server/elasticsearch/init_db.js"` 

@@ -1,5 +1,8 @@
 const express = require("express");
+const logger = require("morgan");
 const app = express();
+
+app.use(logger("dev"));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
