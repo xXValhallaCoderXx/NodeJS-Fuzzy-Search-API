@@ -6,21 +6,19 @@
   "author": "Renate Gouveia <renate@horangi.com>",
   "license": "MIT",
   "scripts": {
-    "start": "export NODE_ENV=dev || SET \"NODE_ENV=dev\" &&  nodemon ./server",
-    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && jest",
-    "test-watch": "nodemon --exec 'npm test'"
+    "start": "node --inspect=0.0.0.0:9229 ./server"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
     "csvtojson": "^2.0.8",
+    "elasticsearch": "13.3.1",
     "express": "^4.16.3",
+    "fast-csv": "^2.4.1",
     "file-stream-rotator": "^0.3.1",
     "mongoose": "^5.2.18",
     "morgan": "^1.9.1"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.1.0",
-    "babel-cli": "^6.26.0",
     "jest": "^23.6.0",
     "nodemon": "^1.18.4",
     "supertest": "^3.3.0"
