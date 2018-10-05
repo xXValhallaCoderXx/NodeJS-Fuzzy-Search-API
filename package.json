@@ -1,23 +1,26 @@
 {
-  "name": "nodejs-fuzzy-search-api",
+  "name": "docker-env",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:xXValhallaCoderXx/NodeJS-Fuzzy-Search-API.git",
+  "repository": "git@github.com:xXValhallaCoderXx/docker-envs.git",
   "author": "Renate Gouveia <renate@horangi.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node --inspect=0.0.0.0:9229 ./server",
-    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && jest"
+    "start": "node ./server",
+    "dev": "nodemon ./server",
+    "test": "jest"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
-    "elasticsearch": "13.3.1",
+    "elasticsearch": "^15.1.1",
     "express": "^4.16.3",
     "fast-csv": "^2.4.1",
-    "morgan": "^1.9.1"
+    "mongoose": "^5.3.1"
   },
   "devDependencies": {
+    "expect": "^23.6.0",
     "jest": "^23.6.0",
+    "morgan": "^1.9.1",
     "nodemon": "^1.18.4",
     "supertest": "^3.3.0"
   }

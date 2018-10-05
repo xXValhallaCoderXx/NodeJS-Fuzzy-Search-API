@@ -11,39 +11,39 @@ const multiQuery = (term, offset = 0) => {
               age: {
                 query: term.age || "",
                 fuzziness: "AUTO",
-                boost: 5
+                boost: 0.2
               }
             }
           },
-          {
-            match: {
-              latitude: {
-                query: term.latitude || "",
-                fuzziness: "AUTO",
-                boost: 2
-              }
-            }
-          },
-          {
-            match: {
-              longitude: {
-                query: term.longitude || "",
-                fuzziness: "AUTO",
-                boost: 2
-              }
-            }
-          },
+          // {
+          //   match: {
+          //     latitude: {
+          //       query: term.latitude || "",
+          //       fuzziness: "0",
+          //       boost: 0.2
+          //     }
+          //   }
+          // },
+          // {
+          //   match: {
+          //     longitude: {
+          //       query: term.longitude || "",
+          //       fuzziness: "0",
+          //       boost: 0.2
+          //     }
+          //   }
+          // },
           {
             match: {
               monthlyIncome: {
                 query: term.monthlyIncome || "",
                 fuzziness: "AUTO",
-                boost: 3
+                boost: 0.2
               }
             }
           },
-          { match: { experienced: term.experienced || "" } }
-        ]
+          //{ match: { experienced: term.experienced || "" } }
+        ] 
       }
     }
   };
