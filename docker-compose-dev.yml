@@ -2,16 +2,27 @@ version: '3'
 services:
   api:
     build: .
-    command: npm run start
+    command: npm run dev
     ports:
-      - "3000:3000"
-    env_file:
-      - '.env'
+      - "8080:8080"
+    environment: # Set ENV vars
+      - NODE_ENV=dev
+      - PORT=8080
+      - ES_HOST=elasticsearch
+      - MONGODB_URI=mongodb://db:27017/dev-todos
     volumes:
       - .:/usr/app/
+      - ./people:/usr/app/people
       - /usr/app/node_modules
     depends_on:
       - db
+  db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGODB_USER="dev-user" 
+      - MONGODB_PASS="dev-pass"
   elasticsearch: # Elasticsearch Instance
     container_name: es-instance
     image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
@@ -20,11 +31,5 @@ services:
     ports: # Expose Elasticsearch ports
       - "9300:9300"
       - "9200:9200"
-  db:
-    image: mongo:latest
-    ports:
-      - "27017:27017"
-    env_file:
-      - '.env'
 volumes: # Define seperate volume for Elasticsearch data
   esdata:

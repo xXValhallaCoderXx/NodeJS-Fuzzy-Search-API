@@ -1,8 +1,8 @@
 const express = require("express");
 const logger = require("morgan");
-const app = express();
+const { mongoose } = require("./db");
 
-const financeAPI = require("./finance-api");
+const app = express();
 
 app.use(logger("dev"));
 
@@ -11,12 +11,14 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Acceptt"
+    "Origin, X-Requested-With, Content-Type, Accept"
   );
   next();
 });
 
-app.use("/api", financeAPI);
+const todoAPI = require("./Todos/api");
+
+app.use("/api", todoAPI);
 
 app.listen(process.env.PORT, () => {
   console.log("Mode: ", process.env.NODE_ENV);
