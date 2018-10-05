@@ -1,8 +1,8 @@
 const express = require("express");
 const logger = require("morgan");
-const { mongoose } = require("./db");
-
 const app = express();
+
+const financeAPI = require("./finance-api");
 
 app.use(logger("dev"));
 
@@ -16,9 +16,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const todoAPI = require("./Todos/api");
-
-app.use("/api", todoAPI);
+app.use("/api", financeAPI);
 
 app.listen(process.env.PORT, () => {
   console.log("Mode: ", process.env.NODE_ENV);

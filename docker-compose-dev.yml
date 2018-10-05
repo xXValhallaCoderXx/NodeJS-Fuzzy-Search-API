@@ -2,6 +2,7 @@ version: '3'
 services:
   api:
     build: .
+    container_name: "api-dev"
     command: npm run dev
     ports:
       - "8080:8080"
@@ -17,6 +18,7 @@ services:
     depends_on:
       - db
   db:
+    container_name: "mongodb-dev"
     image: mongo:latest
     ports:
       - "27017:27017"
@@ -24,7 +26,7 @@ services:
       - MONGODB_USER="dev-user" 
       - MONGODB_PASS="dev-pass"
   elasticsearch: # Elasticsearch Instance
-    container_name: es-instance
+    container_name: es-api
     image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
     volumes: # Persist ES data in seperate "esdata" volume
       - esdata:/usr/share/elasticsearch/data
